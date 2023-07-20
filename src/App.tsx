@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Blog from "./pages/blog/blog";
+import Home from "./pages/home/Home";
+import { Header } from "./components/header/Header";
+import Post from "./pages/post/Post";
+import { Footer } from "./components/footer/Footer";
+import { useTranslation } from "react-i18next";
 
 function App() {
+  const { i18n } = useTranslation(["nav"]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={i18n.language === "he" ? "rtl" : ""}>
+      <Router>
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/blog" component={Blog} />
+          <Route exact path="/posts/:id" component={Post} />
+        </Switch>
+        <Footer />
+      </Router>
     </div>
   );
 }

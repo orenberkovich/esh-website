@@ -1,0 +1,14 @@
+footer {
+  border-top: 1px solid #e6e6e6;
+  background: #fff;
+  padding: 20px;
+  padding: 10px;
+  .icon {
+    font-size: 20px;
+    margin-left: 10px;
+  }
+}
+
+.rtl footer {
+  direction: rtl;
+}
